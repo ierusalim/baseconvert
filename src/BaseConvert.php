@@ -36,7 +36,7 @@ class BaseConvert
             $base = $this->base_default;
         }
         if (!isset($this->bases[$base])) {
-            throw new \Exception("Charset for base-$base not defined");
+            return false;
         }
         $r='0';
         for($i=0; $i < \strlen($src); $i++) {
@@ -53,7 +53,7 @@ class BaseConvert
             $base = $this->base_default;
         }
         if (!isset($this->bases[$base])) {
-            throw new \Exception("Charset for base-$base not defined");
+            return false;
         }
         $r = '';
         while (\bccomp($dec, 0) == 1) {
@@ -66,7 +66,7 @@ class BaseConvert
     }
 
     public function dectohex($dec) {
-        $hex = $this->basex_encode($dec, 16);
+        $hex = $dec ? $this->basex_encode($dec, 16) : 0;
         return (\strlen($hex) % 2)  ? '0' . $hex : $hex;
     }
 
@@ -74,26 +74,26 @@ class BaseConvert
         return $this->basex_decode(\strtolower($hex), 16);
     }
 
-    public function dectobin($dec) {
-        return $this->basex_encode($dec, 2);
+    public function dectobits($dec) {
+        return ($dec > 0) ? $this->basex_encode($dec, 2) : '0';
     }
 
-    public function bintodec($bin) {
-        return $this->basex_decode($bin, 2);
+    public function bitstodec($bits) {
+        return $this->basex_decode($bits, 2);
     }
 
-    public function hextobin($hex) {
+    public function hextobits($hex) {
         $dec = $this->hextodec($hex);
-        return $this->basex_encode($dec, 2);
+        return ($dec > 0) ? $this->basex_encode($dec, 2) : '0';
     }
 
-    public function bintohex($bin) {
-        $dec = $this->bintodec($bin);
+    public function bitstohex($bits) {
+        $dec = $this->bitstodec($bits);
         return $this->dectohex($dec);
     }
 
     public function dectobase58($dec) {
-        return $this->basex_encode($dec, 58);
+        return ($dec > 0) ? $this->basex_encode($dec, 58) : '1';
     }
 
     public function hextobase58($hex) {
