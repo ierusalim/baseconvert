@@ -1,6 +1,6 @@
 <?php
-
 namespace ierusalim\BaseConvert;
+
 /**
  * This class contains BaseConvert
  *
@@ -13,6 +13,7 @@ namespace ierusalim\BaseConvert;
  */
 class BaseConvert
 {
+
     /**
      * Base-ID => base-chars-string
      * 2 => binary
@@ -45,7 +46,8 @@ class BaseConvert
      * @param integer|string $base_default
      * @param string $base_charset
      */
-    public function __construct($base_default = 16, $base_charset = false) {
+    public function __construct($base_default = 16, $base_charset = false)
+    {
         $this->base_default = $base_default;
         if (!empty($base_charset)) {
             $this->bases[$base_default] = $base_charset;
@@ -59,30 +61,32 @@ class BaseConvert
      * @param integer|string $base
      * @return string
      */
-    public function basex_decode($src, $base = false) {
+    public function basex_decode($src, $base = false)
+    {
         if ($base === false) {
             $base = $this->base_default;
         }
         if (!isset($this->bases[$base])) {
             return false;
         }
-        $r='0';
-        for($i=0; $i < \strlen($src); $i++) {
+        $r = '0';
+        for ($i = 0; $i < \strlen($src); $i++) {
             $ch = $src[$i];
             $c = \strpos($this->bases[$base], $src[$i]);
-            $r = (string)\bcmul($r, $base, 0);
-            $r = (string)\bcadd($r, $c, 0);
+            $r = (string) \bcmul($r, $base, 0);
+            $r = (string) \bcadd($r, $c, 0);
         }
         return $r;
     }
 
     /**
-     * Covert from decimal representation of arbitrary precision to specified base
+     * Convert from decimal representation of arbitrary precision to specified base
      * @param string $dec
      * @param integer|string $base
      * @return string
      */
-    public function basex_encode($dec, $base = false) {
+    public function basex_encode($dec, $base = false)
+    {
         if ($base === false) {
             $base = $this->base_default;
         }
@@ -91,73 +95,79 @@ class BaseConvert
         }
         $r = '';
         while (\bccomp($dec, 0) == 1) {
-                $dv = (string) bcdiv($dec, $base, 0);
-                $i = (integer) bcmod($dec, $base);
-                $dec = $dv;
-                $r = $r . $this->bases[$base][$i];
+            $dv = (string) bcdiv($dec, $base, 0);
+            $i = (integer) bcmod($dec, $base);
+            $dec = $dv;
+            $r = $r . $this->bases[$base][$i];
         }
         return \strrev($r);
     }
 
     /**
-     * Covert from decimal representation of arbitrary precision to hex
+     * Convert from decimal representation of arbitrary precision to hex
      *
      * @param string $dec
      * @return string
      */
-    public function dectohex($dec) {
+    public function dectohex($dec)
+    {
         $hex = $dec ? $this->basex_encode($dec, 16) : 0;
-        return (\strlen($hex) % 2)  ? '0' . $hex : $hex;
+        return (\strlen($hex) % 2) ? '0' . $hex : $hex;
     }
 
     /**
-     * Covert from hex to decimal representation of arbitrary precision
+     * Convert from hex to decimal representation of arbitrary precision
      *
      * @param string $hex
      * @return string
      */
-    public function hextodec($hex) {
+    public function hextodec($hex)
+    {
         return $this->basex_decode(\strtolower($hex), 16);
     }
 
     /**
-     * Covert from decimal representation of arbitrary precision to bits
+     * Convert from decimal representation of arbitrary precision to bits
      *
      * @param string $dec
      * @return string
      */
-    public function dectobits($dec) {
+    public function dectobits($dec)
+    {
         return ($dec > 0) ? $this->basex_encode($dec, 2) : '0';
     }
 
     /**
-     * Covert to decimal representation of arbitrary precision from bits
+     * Convert to decimal representation of arbitrary precision from bits
      *
      * @param string $bits
      * @return string
      */
-    public function bitstodec($bits) {
+    public function bitstodec($bits)
+    {
         return $this->basex_decode($bits, 2);
     }
 
     /**
-     * Covert from hex to bits through decimal representation of arbitrary precision
+     * Convert from hex to bits through decimal representation of arbitrary precision
      *
      * @param string $hex
      * @return string
      */
-    public function hextobits($hex) {
+    public function hextobits($hex)
+    {
         $dec = $this->hextodec($hex);
         return ($dec > 0) ? $this->basex_encode($dec, 2) : '0';
     }
 
     /**
-     * Covert from bits to hex through decimal representation of arbitrary precision
+     * Convert from bits to hex through decimal representation of arbitrary precision
      *
      * @param string $bits
      * @return string
      */
-    public function bitstohex($bits) {
+    public function bitstohex($bits)
+    {
         $dec = $this->bitstodec($bits);
         return $this->dectohex($dec);
     }
@@ -168,7 +178,8 @@ class BaseConvert
      * @param string $dec
      * @return string (decimal digits)
      */
-    public function dectobase58($dec) {
+    public function dectobase58($dec)
+    {
         return ($dec > 0) ? $this->basex_encode($dec, 58) : '1';
     }
 
@@ -178,7 +189,8 @@ class BaseConvert
      * @param string $hex (decimal digits)
      * @return string
      */
-    public function hextobase58($hex) {
+    public function hextobase58($hex)
+    {
         $dec = $this->hextodec($hex);
         return $this->dectobase58($dec);
     }
@@ -189,7 +201,8 @@ class BaseConvert
      * @param string $b58
      * @return string
      */
-    public function base58tohex($b58) {
+    public function base58tohex($b58)
+    {
         $dec = $this->basex_decode($b58, 58);
         return $this->dectohex($dec);
     }
