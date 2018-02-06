@@ -1,0 +1,25 @@
+
+{
+    "name": "ierusalim/baseconvert",
+    "description": "Convertation from/to any user-defined base-chars-string throught decimal representation of arbitrary precision",
+    "keywords": ["BaseConvert", "base58", "dectohex", "hextodec", "dechex", "hexdec", "bitcoin", "dectobin", "dectobits", "bitstodec"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Alexander Jer",
+            "email": "alex@ierusalim.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "ext-bcmath": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ierusalim\\BaseConvert\\": "src/"
+        }
+    }
+}
