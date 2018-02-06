@@ -1,0 +1,13 @@
+<phpunit bootstrap="src/BaseConvert.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnFailure="true">
+	<testsuites>
+		<testsuite name="Default Test Suite">
+			<directory>./Tests/src</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>
+
