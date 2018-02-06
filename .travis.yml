@@ -1,0 +1,28 @@
+# see http://about.travis-ci.org/docs/user/languages/php/ for more hints
+language: php
+
+# list any PHP version you want to test against
+php:
+  # using major version aliases
+
+  # aliased to a recent 5.5.x version
+  - 5.5
+  # aliased to a recent 5.6.x version
+  - 5.6
+  # aliased to a recent 7.x version
+  - 7.0
+  - 7.1
+
+# execute any number of scripts before the test run, custom env's are available as variables
+before_script:
+  - travis_retry composer self-update
+  - composer config notify-on-install false
+  - travis_retry composer update --no-interaction --prefer-source
+
+# omitting "script:" will default to phpunit
+script:
+  - vendor/bin/phpunit --configuration phpunit.xml --coverage-clover=coverage.xml
+
+
+after_success:
+ - bash <(curl -s https://codecov.io/bash)
