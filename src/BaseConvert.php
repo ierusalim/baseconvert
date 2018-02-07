@@ -59,7 +59,7 @@ class BaseConvert
      *
      * @param string $src
      * @param integer|string $base
-     * @return string
+     * @return string|false
      */
     public function basex_decode($src, $base = false)
     {
@@ -86,7 +86,7 @@ class BaseConvert
      * Convert from decimal representation of arbitrary precision to specified base
      * @param string $dec
      * @param integer|string $base
-     * @return string
+     * @return string|false
      */
     public function basex_encode($dec, $base = false)
     {
