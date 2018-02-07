@@ -73,6 +73,9 @@ class BaseConvert
         for ($i = 0; $i < \strlen($src); $i++) {
             $ch = $src[$i];
             $c = \strpos($this->bases[$base], $src[$i]);
+            if ($c === false) {
+                return false;
+            }
             $r = (string) \bcmul($r, $base, 0);
             $r = (string) \bcadd($r, $c, 0);
         }

@@ -162,6 +162,10 @@ class BaseConvertTest extends \PHPUnit_Framework_TestCase
         $res = $bc->basex_decode($dec, 10);
         $this->assertEquals($res, $dec);
 
+        // test bad base
+        $res = $bc->basex_decode("1231!", 58);
+        $this->assertFalse($res);
+
         if ($dec) return;
 
         $base_def = $bc->base_default;
