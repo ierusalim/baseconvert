@@ -1,5 +1,6 @@
 
 # BaseConvert
+[![Build Status](https://api.travis-ci.org/ierusalim/baseconvert.svg?branch=master)](https://www.travis-ci.org/ierusalim/baseconvert)
 
 Convertation from/to any user-defined base-chars-string throught decimal representation of arbitrary precision.
 
