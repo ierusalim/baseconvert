@@ -10,7 +10,7 @@ File BaseConvert.php may be use independent.
 For [composer](https://getcomposer.org/):
 
 ```
-composer require ierusalim/baseconv
+composer require ierusalim/baseconvert
 ````
 
 ## Usage
@@ -27,7 +27,7 @@ $bc = new BaseConvert;
 $hex = "43786437856abcdef";
 $b58 = $bc->hextobase58($hex);
 
-echo "hex:$hex => base58:$b58";
+echo "$hex => base58: $b58";
 ```
 
 ## Functions
