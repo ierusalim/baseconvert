@@ -34,14 +34,15 @@ class BaseConvert
     ];
 
     /**
-     * Default base-id use for basex_encode/decode functions by default
+     * Base-id for use in basex_encode/decode functions by default
      *
      * @var integer
      */
     public $base_default;
 
     /**
-     * Initialization: can define any base-id => user-defined-characters
+     * Initialization: in parameters can define any base-id => user-defined-characters
+     * Usually no need to define parameters.
      *
      * @param integer|string $base_default
      * @param string $base_charset
@@ -84,6 +85,7 @@ class BaseConvert
 
     /**
      * Convert from decimal representation of arbitrary precision to specified base
+     *
      * @param string $dec
      * @param integer|string $base
      * @return string|false
