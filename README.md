@@ -1,5 +1,5 @@
 
-# BaseConv
+# BaseConvert
 
 Convertation from/to any user-defined base-chars-string throught decimal representation of arbitrary precision.
 
@@ -20,7 +20,7 @@ Create instance of BaseConvert class and define own base-characters string (if n
 No need to define new alphabet for use hex/binary/base58(bitcoin compatible).
 
 ```php
-use ierusalim\BaseConverter;
+use ierusalim\BaseConvert;
 
 $bc = new BaseConvert;
 
