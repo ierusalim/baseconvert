@@ -152,6 +152,26 @@ class BaseConvertTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Provider of bin <-> bits
+     *
+     * @return array
+     */
+    public function binBitsProvider()
+    {
+        return [
+            [' ' , '00100000', 0],
+            [' ' , '100000', 1],
+            ['  ' , '0010000000100000', 0],
+            ['  ' , '10000000100000', 1],
+            ['a ' , '0110000100100000', 0],
+            ['a ' , '110000100100000', 1],
+            //        HHHHHHHHeeeeeeeelllllllllllllllloooooooo
+            ['Hello','0100100001100101011011000110110001101111',0],
+            //        ........HHHHHHHHiiiiiiii!!!!!!!!
+            [' Hi!', '00100000010010000110100100100001',0],
+        ];
+    }
+    /**
      * @dataProvider decBitsProvider
      * @covers ierusalim\BaseConvert\BaseConvert::basex_decode
      * @todo   Implement testBasex_decode().
@@ -245,7 +265,6 @@ class BaseConvertTest extends \PHPUnit_Framework_TestCase
         $bc = $this->object;
         $res = $bc->dectobits($dec);
         $this->assertEquals($res, $bits);
-        //echo "['$dec', '$chk'],\n";
     }
 
     /**
@@ -270,6 +289,56 @@ class BaseConvertTest extends \PHPUnit_Framework_TestCase
         $bc = $this->object;
         $res = $bc->hextobits($hex);
         $this->assertEquals($res, $bits);
+    }
+
+    /**
+     * @dataProvider hexBitsProvider
+     * @covers ierusalim\BaseConvert\BaseConvert::hextobitsQuick
+     * @todo   Implement testHextobitsQuick().
+     */
+    public function testHextobitsQuick($hex, $bits)
+    {
+        $bc = $this->object;
+        $res = $bc->hextobitsQuick($hex, true);
+        if ($res === '') $res = '0';
+        $this->assertEquals($res, $bits);
+    }
+
+    public function testHextobitsSpeed()
+    {
+        $bc = $this->object;
+        $hex = 'fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141';
+        $iter = 100;
+        echo "\nSpeed compare test started:\n";
+
+        $timestart = microtime(true);
+        for($i = 0; $i < $iter; $i++) {
+            $res = $bc->hextobits($hex);
+        }
+        $timeend = microtime(true) - $timestart;
+        echo "$timeend s. -- hextobits\n";
+
+        $timestart = microtime(true);
+        for($i = 0; $i < $iter; $i++) {
+            $res = $bc->hextobitsQuick($hex);
+        }
+        $timeend = microtime(true) - $timestart;
+        echo "$timeend s. -- hextobitsQuick\n";
+
+        echo "Speed compare test complete.\n";
+    }
+
+    /**
+     * @dataProvider binBitsProvider
+     * @covers ierusalim\BaseConvert\BaseConvert::bintobits
+     * @todo   Implement testBintobits().
+     */
+    public function testBintobits($bin, $bits, $removeLeftZeros)
+    {
+        $bc = $this->object;
+        $res = 'b' . $bc->bintobits($bin, $removeLeftZeros);
+        //echo "$bin => $res [$removeLeftZeros]\n";
+        $this->assertEquals($res, 'b' . $bits);
     }
 
     /**
