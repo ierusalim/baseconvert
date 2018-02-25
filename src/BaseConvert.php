@@ -111,12 +111,14 @@ class BaseConvert
     /**
      * Convert from decimal representation of arbitrary precision to hex
      *
+     * Negative values not supported
+     *
      * @param string $dec
      * @return string
      */
     public function dectohex($dec)
     {
-        $hex = $dec ? $this->basex_encode($dec, 16) : 0;
+        $hex = ($dec > 0) ? $this->basex_encode($dec, 16) : 0;
         return (\strlen($hex) % 2) ? '0' . $hex : $hex;
     }
 
