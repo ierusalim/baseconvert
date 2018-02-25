@@ -33,6 +33,25 @@ class BaseConvert
         58 => '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
     ];
 
+    public $hex = [
+        '0' => '0000',
+        '1' => '0001',
+        '2' => '0010',
+        '3' => '0011',
+        '4' => '0100',
+        '5' => '0101',
+        '6' => '0110',
+        '7' => '0111',
+        '8' => '1000',
+        '9' => '1001',
+        'a' => '1010',
+        'b' => '1011',
+        'c' => '1100',
+        'd' => '1101',
+        'e' => '1110',
+        'f' => '1111',
+    ];
+
     /**
      * Base-id for use in basex_encode/decode functions by default
      *
@@ -165,6 +184,41 @@ class BaseConvert
     {
         $dec = $this->hextodec($hex);
         return ($dec > 0) ? $this->basex_encode($dec, 2) : '0';
+    }
+
+    /**
+     * Convert from hex string to bits string (quick algorithm)
+     *
+     * @param srting $hex
+     * @return string
+     */
+    public function hextobitsQuick($hex, $removeLeftZeros = false)
+    {
+        $res = [];
+        $harr = $this->hex;
+        $hexlower = \strtolower($hex);
+        $l = \strlen($hex);
+        for($i = 0; $i < $l; $i++) {
+            $c = $hexlower[$i];
+            $res[] = $harr[$c];
+        }
+        $res = \implode('', $res);
+        if ($removeLeftZeros) {
+            $res = \ltrim($res, '0');
+        }
+        return $res;
+    }
+
+    /**
+     * Convert binary string to bits-format (base-2)
+     *
+     * @param string $bin
+     * @param boolean $removeLeftZeros
+     * @return string
+     */
+    public function bintobits($bin, $removeLeftZeros = false) {
+        $hex = bin2hex($bin);
+        return $this->hextobitsQuick($hex, $removeLeftZeros);
     }
 
     /**
