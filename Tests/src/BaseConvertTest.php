@@ -343,6 +343,18 @@ class BaseConvertTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider binBitsProvider
+     * @covers ierusalim\BaseConvert\BaseConvert::bitstobytes
+     * @todo   Implement testBitstobytes().
+     */
+    public function testBitstoBytes($bytes, $bits, $leftRemove)
+    {
+        $bc = $this->object;
+        $res = $bc->bitstobytes($bits);
+        $this->assertEquals($res, $bytes);
+    }
+
+    /**
+     * @dataProvider binBitsProvider
      * @covers ierusalim\BaseConvert\BaseConvert::bitstohexQuick
      * @todo   Implement testBitstohexQuick().
      */

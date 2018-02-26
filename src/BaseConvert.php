@@ -245,6 +245,19 @@ class BaseConvert
     }
 
     /**
+     * Convert bit-string (base-2) to bytes
+     *
+     * @param string $bits
+     * @return string
+     */
+    public function bitstobytes($bits)
+    {
+        $hex = $this->bitstohexQuick($bits);
+        if (strlen($hex) % 2) $hex = '0' . $hex;
+        return hex2bin($hex);
+    }
+
+    /**
      * Convert from bits to hex through decimal representation of arbitrary precision
      *
      * @param string $bits
