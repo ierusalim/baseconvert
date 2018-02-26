@@ -330,13 +330,13 @@ class BaseConvertTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider binBitsProvider
-     * @covers ierusalim\BaseConvert\BaseConvert::bintobits
-     * @todo   Implement testBintobits().
+     * @covers ierusalim\BaseConvert\BaseConvert::bytestobits
+     * @todo   Implement testBytestobits().
      */
-    public function testBintobits($bin, $bits, $removeLeftZeros)
+    public function testBytestobits($bin, $bits, $removeLeftZeros)
     {
         $bc = $this->object;
-        $res = 'b' . $bc->bintobits($bin, $removeLeftZeros);
+        $res = 'b' . $bc->bytestobits($bin, $removeLeftZeros);
         //echo "$bin => $res [$removeLeftZeros]\n";
         $this->assertEquals($res, 'b' . $bits);
     }

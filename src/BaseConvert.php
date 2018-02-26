@@ -233,14 +233,14 @@ class BaseConvert
     }
 
     /**
-     * Convert binary string to bits-format (base-2)
+     * Convert bytes string to bits-format (base-2)
      *
-     * @param string $bin
+     * @param string $bytes
      * @param boolean $removeLeftZeros
      * @return string
      */
-    public function bintobits($bin, $removeLeftZeros = false) {
-        $hex = bin2hex($bin);
+    public function bytestobits($bytes, $removeLeftZeros = false) {
+        $hex = bin2hex($bytes);
         return $this->hextobitsQuick($hex, $removeLeftZeros);
     }
 
