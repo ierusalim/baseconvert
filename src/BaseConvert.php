@@ -16,7 +16,7 @@ class BaseConvert
 
     /**
      * Base-ID => base-chars-string
-     * 2 => binary
+     * 2 => bits
      * 8 => octal
      * 16 (default) => hex
      * 58 => bitcoin-compatible base58
@@ -52,6 +52,8 @@ class BaseConvert
         'f' => '1111',
     ];
 
+    public $bin;
+
     /**
      * Base-id for use in basex_encode/decode functions by default
      *
@@ -72,6 +74,7 @@ class BaseConvert
         if (!empty($base_charset)) {
             $this->bases[$base_default] = $base_charset;
         }
+        $this->bin = \array_flip($this->hex);
     }
 
     /**
@@ -207,6 +210,26 @@ class BaseConvert
             $res = \ltrim($res, '0');
         }
         return $res;
+    }
+
+    /**
+     * Convert from bits string to hex string (quick algorithm)
+     *
+     * @param string $bits
+     * @return string
+     */
+    public function bitstohexQuick($bits)
+    {
+        $res= [];
+        $barr = $this->bin;
+        foreach(\str_split(\str_repeat('0', (4 - (\strlen($bits) % 4)) % 4) . $bits, 4) as $b) {
+            if (isset($barr[$b])) {
+                $res[] = $barr[$b];
+            } else {
+                return false;
+            }
+        }
+        return \implode('', $res);
     }
 
     /**
