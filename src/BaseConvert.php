@@ -239,7 +239,8 @@ class BaseConvert
      * @param boolean $removeLeftZeros
      * @return string
      */
-    public function bytestobits($bytes, $removeLeftZeros = false) {
+    public function bytestobits($bytes, $removeLeftZeros = false)
+    {
         $hex = bin2hex($bytes);
         return $this->hextobitsQuick($hex, $removeLeftZeros);
     }
