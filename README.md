@@ -16,6 +16,7 @@ composer require ierusalim/baseconvert
 
 ## Usage
 
+
 Create instance of BaseConvert class and define own base-characters string (if need).
 
 No need to define new alphabet for use hex/binary/base58(bitcoin compatible).
@@ -44,6 +45,12 @@ echo "$hex => base58: $b58";
 - -> base58tohex($b58) -- Convert from base58 to hex (0123456789abcdef-base)
 - -> basex_decode($data, $base_id) -- Convert from arbitrary base to decimal
 - -> basex_encode($dec, $base_id) -- Convert from decimal to arbitrary base
+
+## Functions base6400
+- -> base6400_encode($str) -- Convert from binary to base6400
+- -> base6400_decode($str) -- Convert from base6400 to binary
+- -> explodeToUnicode($str) -- Convert string from utf-8 to Unicode-array
+- -> implodeUnicode($arr) -- Convert Unicode-array to utf-8 string
 
 ## Bases (pre-defined base_id)
 
