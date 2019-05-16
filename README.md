@@ -46,6 +46,11 @@ echo "$hex => base58: $b58";
 - -> basex_decode($data, $base_id) -- Convert from arbitrary base to decimal
 - -> basex_encode($dec, $base_id) -- Convert from decimal to arbitrary base
 
+## Functions base85vc
+
+- -> base85vc_encode($str) -- Convert from binary data to base85vc
+- -> base85vc_decode($str) -- Convert from base85vc to binary data
+
 ## Functions base6400
 - -> base6400_encode($str) -- Convert from binary to base6400
 - -> base6400_decode($str) -- Convert from base6400 to binary
