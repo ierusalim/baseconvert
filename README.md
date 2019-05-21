@@ -14,7 +14,7 @@ For [composer](https://getcomposer.org/):
 composer require ierusalim/baseconvert
 ````
 
-## Usage
+## Usage BaseConvert
 
 
 Create instance of BaseConvert class and define own base-characters string (if need).
@@ -46,10 +46,21 @@ echo "$hex => base58: $b58";
 - -> basex_decode($data, $base_id) -- Convert from arbitrary base to decimal
 - -> basex_encode($dec, $base_id) -- Convert from decimal to arbitrary base
 
-## Functions base85vc
 
-- -> base85vc_encode($str) -- Convert from binary data to base85vc
-- -> base85vc_decode($str) -- Convert from base85vc to binary data
+## Usage vc85
+
+vc85 is a one of many base85-algorithms, like ascii85, z85, etc.
+
+Encoding vc85 has the following features:
+- Each character is visually unique and easily recognizable:
+  0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyzзгджилпфцчшюяБГДЖИЛПФЦЧШЮЯ
+- Encoded result does not contain special characters;
+- encoding and decoding runs fast.
+
+## Functions vc85
+
+- -> vc85_encode($str) -- Convert from binary data to base85vc
+- -> vc85_decode($str) -- Convert from base85vc to binary data
 
 ## Functions base6400
 - -> base6400_encode($str) -- Convert from binary to base6400

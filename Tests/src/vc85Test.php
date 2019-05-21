@@ -67,14 +67,17 @@ class vc85Test extends \PHPUnit_Framework_TestCase
         $o = $this->object;
 
         // empty string test
-        $enc = $o->vc85_encode('');
+        $str = '';
+        $enc = $o->vc85_encode($str);
         $this->assertEquals('', $enc);
 
+        // pre-defined strings test
         $src = $this->man_str;
         $enc = $o->vc85_encode($src);
         $exp_enc_1251 = mb_convert_encoding($this->man_85_utf, 'cp-1251', 'utf-8');
         $this->assertEquals($exp_enc_1251, $enc);
 
+        // random strings test
         foreach([0,1,64,84,85,86,255] as $j) {
             $first3 = chr(0) . chr(0) . chr($j);
 
