@@ -57,10 +57,27 @@ Encoding vc85 has the following features:
 - Encoded result does not contain special characters;
 - encoding and decoding runs fast.
 
+```php
+use ierusalim\BaseConvert;
+
+$bc = new vc85();
+
+$str = "One day I'm gonna fly away One day when heavens calls my name";
+$enc = $bc->vc85_encode($str);
+
+echo "result: $enc \n";
+
+// result: RkШжцYNQлAPjhWЮZLжz9XJZEЯeФ3nVXTБЮДbgГЧ3XTБЯVZnЯ67ZnЮtЦYrЯpJXФШGБd0BUdAbЮu81G
+
+$back = $bc->vc85_decode($enc);
+
+echo ($str === $back) ? "OK" : "Fail";
+```
+
 ## Functions vc85
 
-- -> vc85_encode($str) -- Convert from binary data to base85vc
-- -> vc85_decode($str) -- Convert from base85vc to binary data
+- -> vc85_encode($str) -- Convert from binary data to vc85
+- -> vc85_decode($str) -- Convert from vc85 to binary data
 
 ## Functions base6400
 - -> base6400_encode($str) -- Convert from binary to base6400

@@ -55,6 +55,16 @@ class vc85Test extends \PHPUnit_Framework_TestCase
 
         $len = strlen($base85vc);
         $this->assertEquals(85, $len);
+
+        $bc = new vc85();
+
+        $str = "One day I'm gonna fly away One day when heavens calls my name";
+        $enc = $bc->vc85_encode($str);
+
+        echo "result: $enc \n";
+        $back = $bc->vc85_decode($enc);
+
+        echo ($str === $back) ? "OK" : "Fail";
     }
 
 
