@@ -14,7 +14,7 @@ class vc85 extends BaseConvert
                     '0123456789'
                   . 'ABCDEFGHJKLMNPQRSTUVWXYZ'
                   . 'abcdefghijkmnopqrstuvwxyz'
-                  . 'згджилпфцчшюя'
+                  . 'згджилпфцчшюэ'
                   . 'БГДЖИЛПФЦЧШЮЯ' , 'cp1251', 'utf-8');
         } elseif (strlen($ascii85_charset) == 85) {
             $b85_chars = $ascii85_charset;

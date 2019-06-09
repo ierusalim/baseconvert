@@ -17,15 +17,15 @@ class vc85Test extends \PHPUnit_Framework_TestCase
                     . 'perseverance of delight in the continued and indefatigable generation '
                     . 'of knowledge, exceeds the short vehemence of any carnal pleasure.';
 
-    public $man_85_utf = 'QГЦПдZЖпbCZЖчZGbhA9Ad7шBЦEFhяidTejVaГXDKeФ3цNd0BjNXTMX8EFhbcdTe4TAcu'
+    public $man_85_utf = 'QГЦПдZЖпbCZЖчZGbhA9Ad7шBЦEFhэidTejVaГXDKeФ3цNd0BjNXTMX8EFhbcdTe4TAcu'
                     . 'RHd0BnTbhA9DXT9iFXTMj7bшCзFcфLчSbшшy7cyччDZЖDQФd1YewZoaШБAbeИVXJZZEd'
-                    . '95naYшЯHEYixБ7bgпRXdbB98AaгtUXJZm2cфxшPYsbJШXЦWц3YшЮuЦaяzmЦdTeRPAcuR'
+                    . '95naYшЯHEYixБ7bgпRXdbB98AaгtUXJZm2cфxшPYsbJШXЦWц3YшЮuЦaэzmЦdTeRPAcuR'
                     . 'DAaшVCdbLvPYqЖПЖbgлЖ7bgцTГXTWJЧXRd4лAbLP6YsbK3ZЖXЖJbчRBCbhШиPYqПdпEF'
                     . 'hkiXЦZKдd0BqTYiy5CbшsЦZe4eVЯbDqsФYixП6AasELAaчБ2bggW7cBQ8Пd9HkN0n';
 
-    public $man_85a_utf = 'QГЦПдZЖпbCZЖчZGbhA9Ad7шBЦEFhяidTejVaГXDKeФ3цNd0BjNXTMX8EFhbcdTe4TAcu'
+    public $man_85a_utf = 'QГЦПдZЖпbCZЖчZGbhA9Ad7шBЦEFhэidTejVaГXDKeФ3цNd0BjNXTMX8EFhbcdTe4TAcu'
                     . 'RHd0BnTbhA9DXT9iFXTMj7bшCзFcфLчSbшшy7cyччDZЖDQФd1YewZoaШБAbeИVXJZZEd'
-                    . '95naYшЯHEYixБ7bgпRXdbB98AaгtUXJZm2cфxшPYsbJШXЦWц3YшЮuЦaяzmЦdTeRPAcuR'
+                    . '95naYшЯHEYixБ7bgпRXdbB98AaгtUXJZm2cфxшPYsbJШXЦWц3YшЮuЦaэzmЦdTeRPAcuR'
                     . 'DAaшVCdbLvPYqЖПЖbgлЖ7bgцTГXTWJЧXRd4лAbLP6YsbK3ZЖXЖJbчRBCbhШиPYqПdпEF'
                     . 'hkiXЦZKдd0BqTYiy5CbшsЦZe4eVЯbDqsФYixП6AasELAaчБ2bggW7cBQ8Пd9HkNn';
 
